@@ -188,3 +188,13 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+.login {
+  text-align: center;
+  margin-block: 7%;
+}
+
+.campo{
+  text-align: center;
+  padding: 15px;
+}
