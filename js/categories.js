@@ -66,21 +66,16 @@ function showCategoriesList(){
             </div>
             `
         }
-
         document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
     }
 }
 
 function sortAndShowCategories(sortCriteria, categoriesArray){
     currentSortCriteria = sortCriteria;
-
     if(categoriesArray != undefined){
         currentCategoriesArray = categoriesArray;
     }
-
     currentCategoriesArray = sortCategories(currentSortCriteria, currentCategoriesArray);
-
-    //Muestro las categorías ordenadas
     showCategoriesList();
 }
 
