@@ -5,7 +5,7 @@ function login(){
     if (email === "" || contraseña === ""){
         alert ("Debe completar ambos campos.");
     }else{
-        sessionStorage.setItem('email', email);
+        localStorage.setItem('email', email);
         location.href="index.html";
     }
 }

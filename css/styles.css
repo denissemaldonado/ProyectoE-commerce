@@ -158,10 +158,20 @@ footer p {
 }
 
 .signin {
-  width: 100%;
-  max-width: 330px;
-  padding: 15px;
+  max-width: fit-content;
   margin: auto;
+  text-align: center;
+}
+
+.login {
+  margin: auto;
+  max-width: 500px;
+  text-align: center;
+  padding: 3%;
+}
+
+.botoningresar {
+  max-width: 300px;
 }
 
 #spinner-wrapper {
@@ -189,12 +199,10 @@ a.custom-card:hover {
   color: orange;
 }
 
-.login {
-  text-align: center;
-  margin-block: 7%;
+.body{
+  background-color: rgb(248, 249, 250);
 }
 
-.campo{
-  text-align: center;
-  padding: 15px;
+.buscador{
+  max-width: 400px;
 }

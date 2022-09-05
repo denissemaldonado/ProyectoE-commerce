@@ -31,7 +31,6 @@ function sortCategories(criteria, array){
             return 0;
         });
     }
-
     return result;
 }
 
@@ -79,9 +78,16 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
     showCategoriesList();
 }
 
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
+//Muestra el usuario en el <nav>
+document.addEventListener("DOMContentLoaded", function(){
+    let email = localStorage.getItem("email");
+    if (email != null){
+        document.getElementById("logout").style.display = "block";
+        document.getElementById("login").style.display = "none";
+        document.getElementById("nombreusuario").innerHTML = email;
+    }
+})
+
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(CATEGORIES_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
@@ -114,8 +120,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 
     document.getElementById("rangeFilterCount").addEventListener("click", function(){
-        //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
-        //de productos por categoría.
+        //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad de productos por categoría.
         minCount = document.getElementById("rangeFilterCountMin").value;
         maxCount = document.getElementById("rangeFilterCountMax").value;
 
@@ -135,4 +140,11 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         showCategoriesList();
     });
+
+    document.addEventListener("DOMContentLoaded", function(){
+        document.getElementById("cerrar").addEventListener("click",() => {
+            localStorage.clear();
+            location.href="index.html";
+        })
+    })
 });

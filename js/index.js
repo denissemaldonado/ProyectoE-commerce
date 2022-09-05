@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function(){
-    let email = sessionStorage.getItem('email');
-
-    if (email === null){
-        alert("No se ha iniciado sesión.");
-        location.href="login.html";
+    let email = localStorage.getItem("email");
+    if (email != null){
+        document.getElementById("logout").style.display = "block";
+        document.getElementById("login").style.display = "none";
+        document.getElementById("nombreusuario").innerHTML = email;
     }
 })
 
@@ -21,3 +21,14 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
 });
+
+function logOut(){
+    localStorage.clear();
+    location.href="index.html";
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+    document.getElementById("cerrar").addEventListener("click",() => {
+        logOut();
+    })
+})

@@ -147,3 +147,18 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     });
 });
+
+document.addEventListener("DOMContentLoaded", function(){
+    let email = localStorage.getItem("email");
+    if (email != null){
+        document.getElementById("logout").style.display = "block";
+        document.getElementById("login").style.display = "none";
+        document.getElementById("nombreusuario").innerHTML = email;
+    }
+})
+document.addEventListener("DOMContentLoaded", function(){
+    document.getElementById("cerrar").addEventListener("click",() => {
+        localStorage.clear();
+        location.href="index.html";
+    })
+})

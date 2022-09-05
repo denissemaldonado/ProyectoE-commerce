@@ -12,7 +12,8 @@
   <link href="css/styles.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="body">
+
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -30,20 +31,97 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" id="login" style="display:active;">
+            <a class="nav-link" href="login.html">Iniciar sesión</a>
+          </li>
+          <li class="nav-item" id="logout" style="display:none;">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false" id="nombreusuario"></button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#" id="cerrar">Cerrar sesión</a></li>
+              </ul>
+            </div>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-  
-<main class="pb-5 container">
-  <div class="text-center p-4">
-    <h2>Productos</h2>
-  </div>
-  <div id="lista-productos">
-  </div>
-</main>
+
+  <main class="pb-5 container">
+
+    <div class="text-center p-4">
+      <h2 id="cat-nombre"></h2>
+    </div>
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col text-end">
+          <div class="row container p-0 m-0">
+
+            <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
+              <div class="col">
+                <div class="input-group w-50">
+                  <span class="input-group-text" id="basic-addon1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                    </svg>
+                  </span>
+                  <input type="search" class="form-control" placeholder="Buscar por título o descripción" id="buscar" aria-label="Input group example" aria-describedby="basic-addon1">
+                </div>
+              </div>
+
+              <div>
+                <input type="radio" class="btn-check" name="options" id="sortAsc">
+                <label class="btn btn-light" for="sortAsc"><i class="fas fa-sort-amount-up mr-1"></i> Precio (asc.)</label>
+              </div>
+
+              <div>
+                <input type="radio" class="btn-check" name="options" id="sortDesc">
+                <label class="btn btn-light" for="sortDesc"><i class="fas fa-sort-amount-down mr-1"></i> Precio (desc.)</label>
+              </div>
+
+              <div>
+                <input type="radio" class="btn-check" name="options" id="sortDescByRel" checked>
+                <label class="btn btn-light" for="sortDescByRel"><i class="fas fa-sort-amount-down mr-1"></i> Relevancia (desc.)</label>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
+          <div class="row container p-0 m-0">
+
+            <div class="col">
+              <p class="font-weight-normal text-end my-2">Filtrar por precio:</p>
+            </div>
+
+            <div class="col">
+              <input class="form-control" type="number" placeholder="mín." id="rangeFilterCostMin">
+            </div>
+
+            <div class="col">
+              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCostMax">
+            </div>
+
+            <div class="col-3 p-0">
+              <div class="btn-group" role="group">
+                <button class="btn btn-light btn-block" id="aplicar-filtro">Aplicar</button>
+                <button class="btn btn-link btn-sm" id="limpiar-filtro">Limpiar</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div id="lista-productos"></div>
+    </div>
+  </main>
 
   <footer class="text-muted">
     <div class="container">
@@ -55,7 +133,7 @@
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
-  
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
@@ -64,10 +142,11 @@
       <div></div>
     </div>
   </div>
-  
+
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/products.js"></script>
 
 </body>
+
 </html>
