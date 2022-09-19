@@ -40,14 +40,12 @@ function setCatID(id) {
 }
 
 function showCategoriesList(){
-
     let htmlContentToAppend = "";
     for(let i = 0; i < currentCategoriesArray.length; i++){
         let category = currentCategoriesArray[i];
 
         if (((minCount == undefined) || (minCount != undefined && parseInt(category.productCount) >= minCount)) &&
             ((maxCount == undefined) || (maxCount != undefined && parseInt(category.productCount) <= maxCount))){
-
             htmlContentToAppend += `
             <div onclick="setCatID(${category.id})" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
@@ -63,8 +61,7 @@ function showCategoriesList(){
                     </div>
                 </div>
             </div>
-            `
-        }
+            `}
         document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
     }
 }

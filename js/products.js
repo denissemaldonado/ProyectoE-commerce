@@ -1,12 +1,18 @@
 let productsArray = [];
 let catID = localStorage.getItem("catID");
 
+function setProductId(productid){
+    localStorage.setItem("productid", productid)
+    window.location = "product-info.html"
+}
+
 //Muestra los productos del array dado.
 function showProductsList(array){
     let htmlContentToAppend = "";
     for (let i = 0; i < array.length; i++){ 
         let product = array[i];
         htmlContentToAppend += `
+        <div onclick="setProductId(${product.id})" class="list-group-item list-group-item-action cursor-active">
         <div class="container">
             <div class="row">
                 <div class="col-3">
@@ -22,6 +28,7 @@ function showProductsList(array){
                     </div>
                 </div>
             </div>
+        </div>
         </div>`
         document.getElementById("lista-productos").innerHTML = htmlContentToAppend; 
     }
@@ -63,16 +70,6 @@ function sortDescRel(){
     showProductsList(sortedDescRel)
 }
 
-//Muestra el usuario en el <nav>
-document.addEventListener("DOMContentLoaded", function(){
-    let email = localStorage.getItem("email");
-    if (email != null){
-        document.getElementById("logout").style.display = "block";
-        document.getElementById("login").style.display = "none";
-        document.getElementById("nombreusuario").innerHTML = email;
-    }
-})
-
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(PRODUCTS_URL + catID + EXT_TYPE).then(function(resultObj){
         if (resultObj.status === "ok"){
@@ -103,10 +100,17 @@ document.addEventListener("DOMContentLoaded", function(e){
         clearFilter();
     });
 
-    document.addEventListener("DOMContentLoaded", function(){
-        document.getElementById("cerrar").addEventListener("click",() => {
-            localStorage.clear();
-            location.href="index.html";
-        })
-    })
+    //Muestra el usuario en el <nav>
+    let email = localStorage.getItem("email")
+    if (email != null){
+        document.getElementById("logout").style.display = "block";
+        document.getElementById("login").style.display = "none";
+        document.getElementById("nombreusuario").innerHTML = email;
+    };
+    
+    //Cerrar sesión.
+    document.getElementById("cerrar").addEventListener("click",() => {
+        localStorage.clear();
+        location.href="index.html";
+    });
 })
