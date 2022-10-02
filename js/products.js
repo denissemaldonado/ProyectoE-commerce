@@ -108,7 +108,15 @@ document.addEventListener("DOMContentLoaded", function(e){
         document.getElementById("nombreusuario").innerHTML = email;
     };
     
-    //Cerrar sesión.
+    //Funciones del <nav>
+    document.getElementById("carrito").addEventListener("click", () => {
+        window.location = "cart.html"
+    });
+
+    document.getElementById("perfil").addEventListener("click", () => {
+        window.location = "my-profile.html"
+    });
+    
     document.getElementById("cerrar").addEventListener("click",() => {
         localStorage.clear();
         location.href="index.html";

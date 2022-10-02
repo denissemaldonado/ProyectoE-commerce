@@ -66,6 +66,27 @@ document.addEventListener("DOMContentLoaded", function(e){
         updateTotalCosts();
     });
 
+    //Muestra el usuario en el <nav>
+    let email = localStorage.getItem("email");
+    if (email != null){
+        document.getElementById("logout").style.display = "block";
+        document.getElementById("login").style.display = "none";
+        document.getElementById("nombreusuario").innerHTML = email;
+    }
+
+    //Funciones del <nav>
+    document.getElementById("carrito").addEventListener("click", () => {
+        window.location = "cart.html"
+    });
+
+    document.getElementById("perfil").addEventListener("click", () => {
+        window.location = "my-profile.html"
+    });
+
+    document.getElementById("cerrar").addEventListener("click",() => {
+        localStorage.clear();
+        location.href="index.html";
+    });
 
     //Configuraciones para el elemento que sube archivos
     let dzoptions = {
@@ -145,20 +166,7 @@ document.addEventListener("DOMContentLoaded", function(e){
                 document.getElementById("alertResult").classList.add("show");
             });
         }
+
+        
     });
 });
-
-document.addEventListener("DOMContentLoaded", function(){
-    let email = localStorage.getItem("email");
-    if (email != null){
-        document.getElementById("logout").style.display = "block";
-        document.getElementById("login").style.display = "none";
-        document.getElementById("nombreusuario").innerHTML = email;
-    }
-})
-document.addEventListener("DOMContentLoaded", function(){
-    document.getElementById("cerrar").addEventListener("click",() => {
-        localStorage.clear();
-        location.href="index.html";
-    })
-})

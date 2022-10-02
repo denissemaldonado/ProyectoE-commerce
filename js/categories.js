@@ -75,16 +75,6 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
     showCategoriesList();
 }
 
-//Muestra el usuario en el <nav>
-document.addEventListener("DOMContentLoaded", function(){
-    let email = localStorage.getItem("email");
-    if (email != null){
-        document.getElementById("logout").style.display = "block";
-        document.getElementById("login").style.display = "none";
-        document.getElementById("nombreusuario").innerHTML = email;
-    }
-})
-
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(CATEGORIES_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
@@ -138,10 +128,27 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCategoriesList();
     });
 
-    document.addEventListener("DOMContentLoaded", function(){
-        document.getElementById("cerrar").addEventListener("click",() => {
-            localStorage.clear();
-            location.href="index.html";
-        })
-    })
+    //Muestra el usuario en el <nav>
+
+    let email = localStorage.getItem("email");
+    if (email != null){
+        document.getElementById("logout").style.display = "block";
+        document.getElementById("login").style.display = "none";
+        document.getElementById("nombreusuario").innerHTML = email;
+    }
+
+    //Funciones del <nav>
+    document.getElementById("carrito").addEventListener("click", () => {
+        window.location = "cart.html"
+    });
+
+    document.getElementById("perfil").addEventListener("click", () => {
+        window.location = "my-profile.html"
+    });
+    
+    document.getElementById("cerrar").addEventListener("click",() => {
+        localStorage.clear();
+        location.href="index.html";
+    });
+
 });
