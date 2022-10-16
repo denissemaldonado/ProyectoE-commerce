@@ -49,6 +49,10 @@ function showComments(comments){
 }
 
 function comentar(){
+
+    /*if (localStorage.getItem("email")===null){
+        mostrar un cartel
+    }*/
     
     let opinionTexto = "";
     opinionTexto = document.getElementById("opinion").value

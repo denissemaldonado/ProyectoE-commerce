@@ -1,5 +1,6 @@
 let productsArray = [];
 let catID = localStorage.getItem("catID");
+let resultados = [];
 
 function setProductId(productid){
     localStorage.setItem("productid", productid)
@@ -70,6 +71,14 @@ function sortDescRel(){
     showProductsList(sortedDescRel)
 }
 
+function buscarProductos() {
+    let busqueda = document.getElementById("buscar").value;
+
+    resultados = productsArray.filter(producto => producto.name.toLowerCase().indexOf(busqueda.toLowerCase())>-1 ||
+    producto.description.toLowerCase().indexOf(busqueda.toLowerCase())>-1);
+    showProductsList(resultados);
+}
+
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(PRODUCTS_URL + catID + EXT_TYPE).then(function(resultObj){
         if (resultObj.status === "ok"){
@@ -121,4 +130,8 @@ document.addEventListener("DOMContentLoaded", function(e){
         localStorage.clear();
         location.href="index.html";
     });
+
+    document.getElementById("buscar").addEventListener("keyup", () => {
+        buscarProductos()
+    })
 })

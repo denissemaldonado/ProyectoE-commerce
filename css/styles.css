@@ -210,3 +210,11 @@ a.custom-card:hover {
 .prod-info-title{
   margin-top: 50px;
 }
+
+.input-cantidad{
+  max-width: 80px;
+}
+
+.subtotal{
+  max-width: 120px;
+}
