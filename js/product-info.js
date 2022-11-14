@@ -3,6 +3,15 @@ let productInfo = [];
 let comentarios = [];
 let productosRel = [];
 
+function addToCart(numeroid) {
+    localStorage.setItem("al-carrito", numeroid);
+
+    //if ((localStorage.getItem("al-carrito")) != null){}
+    //tiene que acumularse!!!
+
+    //GUARDAR EL OBJETO
+}
+
 function showProductInfo(info) {
     let htmlContentToAppend = "";
     
@@ -11,13 +20,14 @@ function showProductInfo(info) {
     precio = info.cost + " " + info.currency;
     ventas = info.soldCount;
     categoria = info.category;
+    id = info.id;
     
     htmlContentToAppend += `
     <h1 class="prod-info-title"> ${nombre} </h1>
     <div> ${descripcion} </div><br>
-    <div class="row"><h5> Precio: ${precio} </h5></div><br>
-    <div class="row"><h5> Cantidad vendida: ${ventas} unidades </h5></div><br>
-    <div class="row"><h5> Categoría: ${categoria} </h5></div><br>
+    <div class="row"><h5> Precio: ${precio} <button type="button" onclick="addToCart(${id})">Comprar</button></h5></div>
+    <div class="row"><h5> Cantidad vendida: ${ventas} unidades </h5></div>
+    <div class="row"><h5> Categoría: ${categoria} </h5></div>
     <div>`  
 
     for (let i = 0; i < info.images.length; i++){ 

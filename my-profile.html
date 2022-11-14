@@ -17,7 +17,6 @@
       -ms-user-select: none;
       user-select: none;
     }
-
     @media (min-width: 768px) {
       .bd-placeholder-img-lg {
         font-size: 3.5rem;
@@ -27,6 +26,7 @@
 </head>
 
 <body>
+  
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -44,19 +44,80 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" id="logout" style="display:none;">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false" id="nombreusuario"></button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#" id="carrito">Mi Carrito</a></li>
+                <li><a class="dropdown-item" href="#" id="perfil">Mi Perfil</a></li>
+                <li><a class="dropdown-item" href="#" id="cerrar">Cerrar sesión</a></li>
+              </ul>
+            </div>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+
   <main>
+    
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+      <h4>Editar Perfil</h4>
+
+      <div class="row g-2">
+        <div class="col-md">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="nombre1" placeholder="nombre1">
+            <label for="nombre1">Primer Nombre (*)</label>
+          </div>
+          <div class="invalid-feedback" id="feedback-nombre">Ingrese su nombre.</div>
+        </div>
+        <div class="col-md">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="nombre2" placeholder="nombre2">
+            <label for="nombre2">Segundo Nombre</label>
+          </div>
+        </div>
+      </div><br>
+        
+      <div class="row g-2">
+        <div class="col-md">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="apellido1" placeholder="apellido1">
+            <label for="apellido1">Primer Apellido (*)</label>
+          </div>
+          <div class="invalid-feedback" id="feedback-apellido">Ingrese su apellido.</div>
+        </div>
+        <div class="col-md">
+          <div class="form-floating">
+            <input type="text" class="form-control" id="apellido2" placeholder="apellido2">
+            <label for="apellido2">Segundo Apellido</label>
+          </div>
+        </div>
+      </div><br>
+        
+      <div class="row g-2">
+        <div class="col-md">
+          <div class="form-floating">
+            <input type="email" class="form-control" id="ingreso-email" placeholder="email">
+            <label for="ingreso-email">E-mail (*)</label>
+          </div>
+          <div class="invalid-feedback" id="feedback-email">Ingrese su e-mail.</div>
+        </div>
+        <div class="col-md">
+          <div class="form-floating">
+            <input type="number" class="form-control" id="telefono" minlength="9" maxlength="9" placeholder="telefono">
+            <label for="telefono">Teléfono de contacto</label>
+          </div>
+        </div>
+      </div><br>
+      
+      <button id="guardar" type="button" class="btn btn-primary">Guardar cambios</button>
     </div>
+
   </main>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
@@ -67,9 +128,10 @@
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
+  
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/my-profile.js"></script>
-</body>
 
+</body>
 </html>
